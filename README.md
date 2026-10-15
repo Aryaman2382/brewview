@@ -101,7 +101,7 @@ The app opens at `http://localhost:8501`. Try queries like:
 | Prachi Dhimate (26060133)            | LLM summary evaluation (60 blind-labelled summaries), inter-annotator agreement (50-row overlap), report writing (data sources, references) |
 | Lavil Saldanha (26036727)   | Ground-truth validation (Yelp WiFi/NoiseLevel cross-check), error analysis & categorisation, report writing (challenges, limitations) |
 | Chakshu Karwal (26038226)   | User study (SUS usability survey, 5-8 participants), UX feedback & recommendations, demo video, report writing (outcomes & value) |
-| Aditya Ahlawat    | Market comparison (Google Maps, Yelp vs BrewView), poster update with final results, report writing (objectives, recommendations, final edit) |
+| Aditya Ahlawat (25980311)   | Market comparison (Google Maps, Yelp vs BrewView), poster update with final results, report writing (objectives, recommendations, final edit) |
 
 ## License
 
