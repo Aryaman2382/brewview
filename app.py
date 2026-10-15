@@ -111,6 +111,9 @@ st.markdown("""
 @keyframes pour { from { opacity: 0; transform: rotate(-160deg) scale(.55); } to { opacity: 1; transform: none; } }
 .sheet-head .cup { animation: pour .8s cubic-bezier(.2,.8,.2,1) both; }
 @media (prefers-reduced-motion: reduce) { .sheet-head .cup { animation: none; } }
+/* Copyright line at the foot of every page. */
+.footer { margin-top: 3rem; padding: 1.1rem 0 0.4rem 0; border-top: 1px solid var(--line);
+  color: var(--ink-2); font-size: 0.85rem; text-align: center; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -179,7 +182,7 @@ LIVELY_WORDS = ["lively", "buzzy", "bustling", "busy", "energetic", "social", "l
 
 # What users see instead of internal aspect names.
 LABELS = {"coffee": "Coffee", "tea": "Tea", "food": "Food", "vibe": "Atmosphere",
-          "service": "Service", "seating": "Seating", "price": "Price", "parking": "Parking",
+          "service": "Service", "seating": "Seating", "price": "Value for money", "parking": "Parking",
           "location": "Location", "hours": "Opening hours", "internet": "Wifi",
           "alcohol": "Drinks (alcohol)", "study": "Good for studying", "noise": "Noise level"}
 # The chalkboard: a mood on the board, and the request it sends.
@@ -189,6 +192,13 @@ BOARD = [("Exam week cram session", "Quiet cafe for studying with good wifi"),
          ("Board games and a latte", "Cafe with board games"),
          ("Bubble tea on a budget", "Cheap bubble tea"),
          ("Laptop in the sunshine", "Outdoor seating to work on my laptop")]
+# Approximate centre points for the "Neighbourhood" filter (latitude, longitude).
+# South Philly is a large district, so its label names the point we measure from.
+PLACES = {"Center City": (39.9526, -75.1635),     # City Hall
+          "University City": (39.9530, -75.1920), # Penn and Drexel
+          "Old City": (39.9510, -75.1440),        # around 2nd and Market
+          "Fishtown": (39.9690, -75.1340),        # Frankford and Girard
+          "South Philly (East Passyunk)": (39.9290, -75.1640)}
 
 
 def parse_query(text):
@@ -210,6 +220,14 @@ def parse_query(text):
 W_ASPECT, W_SEMANTIC, W_QUALITY = 0.5, 0.35, 0.15
 TOP_SENTS, CANDIDATE_SENTS = 3, 3000
 EVIDENCE_PER_CAFE, EVIDENCE_WORDS = 3, (5, 40)
+
+
+def haversine_km(lat, lon, lat0, lon0):
+    """Straight-line distance in km between cafes and one point."""
+    lat, lon = np.radians(lat), np.radians(lon)
+    lat0, lon0 = np.radians(lat0), np.radians(lon0)
+    a = np.sin((lat - lat0) / 2) ** 2 + np.cos(lat) * np.cos(lat0) * np.sin((lon - lon0) / 2) ** 2
+    return 6371.0 * 2 * np.arcsin(np.sqrt(a))
 
 
 class DenseRetriever:
@@ -237,7 +255,7 @@ class Recommender:
                          & ~sents["sentence"].str.rstrip().str.endswith("?")
                          & ~sents["sentence"].str.contains(r"\.\.\.\s*$")).to_numpy()
 
-    def recommend(self, text, k=5, hide_possibly_closed=True):
+    def recommend(self, text, k=5, hide_possibly_closed=True, near=None, radius_km=None):
         aspects, direction = parse_query(text)
         sims = self.retriever.similarities(text)
         top = np.argpartition(-sims, CANDIDATE_SENTS)[:CANDIDATE_SENTS]
@@ -256,7 +274,14 @@ class Recommender:
         df["final"] = ((w_aspect * pct(fit.mean(axis=1)) if aspects else 0)
                        + (W_SEMANTIC + W_ASPECT - w_aspect) * pct(df["relevance"])
                        + W_QUALITY * pct(df["overall_sent"]))
-        df = df.sort_values(["final", "n_reviews", "shop"], ascending=[False, False, True])
+        # Filters are applied after scoring, so a cafe's score does not depend on which
+        # other cafes happen to be filtered out.
+        keep = pd.Series(True, index=df.index)
+        df["distance_km"] = np.nan
+        if near is not None and radius_km:
+            df["distance_km"] = haversine_km(df["latitude"], df["longitude"], *near)
+            keep &= df["distance_km"] <= radius_km
+        df = df[keep].sort_values(["final", "n_reviews", "shop"], ascending=[False, False, True])
         return {"query": text, "aspects": aspects, "direction": direction,
                 "results": [self._explain(sid, row, aspects, direction, sims)
                             for sid, row in df.head(k).iterrows()]}
@@ -296,6 +321,7 @@ class Recommender:
             "shop": row["shop"], "address": row["address"], "stars": float(row["mean_stars"]),
             "n_reviews": int(row["n_reviews"]), "last_review": str(row["last_review"])[:10],
             "latitude": float(row["latitude"]), "longitude": float(row["longitude"]),
+            "distance_km": None if pd.isna(row["distance_km"]) else float(row["distance_km"]),
             "aspects": {a: {"score": float(self.score.at[shop_id, a]),
                             "mentions": int(self.mentions.at[shop_id, a]),
                             "enough_evidence": bool(self.claimable.at[shop_id, a])} for a in aspects},
@@ -439,14 +465,16 @@ def esc(s):
     return (str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
 
 
-def render_sheet(rank, r, direction):
+def render_sheet(rank, r, direction, near_label=None):
     stars = f"{r['stars']:.1f}"
+    dist = (f'<br>{r["distance_km"]:.1f} km from {esc(near_label)}'
+            if near_label and r["distance_km"] is not None else "")
     cup = cup_svg(r["shop"], label=f"Latte art for {esc(r['shop'])}").replace(
         "<svg ", f'<svg style="animation-delay:{(rank - 1) * 0.12:.2f}s" ', 1)
     head = (f'<div class="sheet-head">{cup}'
             f'<div><div class="rank">No. {rank}</div><div class="name">{esc(r["shop"])}</div>'
             f'<p class="meta">{beans_svg(r["stars"])}<b>{stars}</b> from {r["n_reviews"]} reviews, '
-            f'last reviewed {r["last_review"]}<br>{esc(r["address"])}</p></div></div>')
+            f'last reviewed {r["last_review"]}<br>{esc(r["address"])}{dist}</p></div></div>')
     rows = ""
     for a, v in r["aspects"].items():
         if v["enough_evidence"]:
@@ -464,12 +492,22 @@ def render_sheet(rank, r, direction):
     st.markdown(head + rows + notes + watch, unsafe_allow_html=True)
 
 
-def render_map(results):
+def render_map(results, near_label=None):
     import pydeck as pdk
     pts = pd.DataFrame([{"rank": str(i), "name": r["shop"], "lat": r["latitude"], "lon": r["longitude"]}
                         for i, r in enumerate(results, 1)])
     view = pdk.ViewState(latitude=pts["lat"].mean(), longitude=pts["lon"].mean(), zoom=12)
-    layers = [
+    layers = []
+    if near_label:
+        lat0, lon0 = PLACES[near_label]
+        hub = pd.DataFrame([{"rank": "", "name": near_label, "lat": lat0, "lon": lon0}])
+        layers += [
+            pdk.Layer("ScatterplotLayer", hub, get_position="[lon, lat]", get_radius=70,
+                      get_fill_color=[239, 230, 220, 230], pickable=True),
+            pdk.Layer("TextLayer", hub, get_position="[lon, lat]", get_text="name", get_size=13,
+                      get_color=[239, 230, 220], get_pixel_offset=[0, -18]),
+        ]
+    layers += [
         pdk.Layer("ScatterplotLayer", pts, get_position="[lon, lat]", get_radius=110,
                   get_fill_color=[212, 71, 94, 235], pickable=True),
         pdk.Layer("TextLayer", pts, get_position="[lon, lat]", get_text="rank", get_size=14,
@@ -488,54 +526,80 @@ st.markdown('<div class="hero"><div><div class="wordmark">Brew<span>View</span><
             unsafe_allow_html=True)
 
 with st.sidebar:
-    st.markdown("### Settings")
+    st.markdown("### Filters")
+    near_choice = st.selectbox("Neighbourhood", ["Anywhere"] + list(PLACES),
+                               help="Distance is measured in a straight line from the centre of "
+                                    "the neighbourhood you pick.")
+    radius = st.slider("Within (km)", 1.0, 5.0, 2.0, 0.5, disabled=near_choice == "Anywhere")
     k = st.slider("Number of cafes", 3, 10, 5)
     hide_closed = st.toggle("Hide cafes with no reviews since early 2020", value=True,
-                            help="Our data has no 'open/closed' flag. Cafes nobody has reviewed "
-                                 "for two years may have closed.")
+                            help="Our reviews end in early 2022. Cafes with no reviews since early "
+                                 "2020 may have closed, so we hide them. Switch this off to see every cafe.")
     st.markdown("### How BrewView ranks cafes")
     st.markdown(
         "1. **What you asked for.** We pick out features like quiet, wifi or studying, and score each "
-        "cafe on them from its reviews (50% of the ranking).\n"
+        "cafe on them from its reviews.\n"
         "2. **What you meant.** Your whole request is compared by meaning with 382,400 review "
-        "sentences (35%).\n"
-        "3. **Overall impression.** The average tone of the cafe's reviews (15%).\n\n"
+        "sentences.\n"
+        "3. **Overall impression.** The average tone of the cafe's reviews.\n\n"
         "We only claim a feature when at least 3 reviews mention it. Quotes are always real "
         "reviews, and the downside shown is the most critical relevant comment we found.")
     st.caption("Data: Yelp Open Dataset (academic use), 594 Philadelphia cafes, reviews 2005 to 2022.")
 
 if "query" not in st.session_state:
     st.session_state.query = ""
+if "query_box" not in st.session_state:
+    st.session_state.query_box = ""
 if "summaries" not in st.session_state:
     st.session_state.summaries = {}
 
+
+# The search box is bound to session state by its key and is never given a `value`.
+# Passing value=query made Streamlit treat it as a new widget whenever the query
+# changed, so every other search returned the previous request. Callbacks run before
+# the page is redrawn, so the results always match the request just made.
+def run_search():
+    st.session_state.query = st.session_state.query_box.strip()
+
+
+def use_example(text):
+    st.session_state.query = st.session_state.query_box = text
+
+
 with st.form("search", border=False):
     c1, c2 = st.columns([5, 1])
-    typed = c1.text_input("What are you looking for?", value=st.session_state.query,
-                          placeholder="e.g. a quiet cafe with good wifi where I can study",
-                          label_visibility="collapsed")
-    if c2.form_submit_button("Find cafes", type="primary", use_container_width=True):
-        st.session_state.query = typed.strip()
+    c1.text_input("What are you looking for?", key="query_box",
+                  placeholder="e.g. a quiet cafe with good wifi where I can study",
+                  label_visibility="collapsed")
+    c2.form_submit_button("Find cafes", type="primary", use_container_width=True, on_click=run_search)
 
 with st.container(key="board"):
     st.markdown('<div class="board-title">On the board today</div>'
                 '<div class="board-sub">Not sure what to type? Pick a mood.</div>', unsafe_allow_html=True)
     cols = st.columns(3)
     for i, (label, ex) in enumerate(BOARD):
-        if cols[i % 3].button(label, key=f"ex{i}", use_container_width=True, help=ex):
-            st.session_state.query = ex
-            st.rerun()
+        cols[i % 3].button(label, key=f"ex{i}", use_container_width=True, help=ex,
+                           on_click=use_example, args=(ex,))
+
+def footer():
+    """Copyright line. Called before every st.stop() and at the end, so it shows on every page."""
+    st.markdown('<div class="footer">© 2026 BrewView by Group 21. All rights reserved.</div>',
+                unsafe_allow_html=True)
+
 
 query = st.session_state.query
 if not query:
     st.markdown('<div class="empty">Describe the cafe you want in your own words: the mood, what you plan '
                 'to do there, what matters to you. BrewView reads the reviews so you don\'t have to.</div>',
                 unsafe_allow_html=True)
+    footer()
     st.stop()
 
 engine, n_cafes, n_sents = load_engine()
 with st.spinner(LOADING[sum(map(ord, query)) % len(LOADING)]):
-    out = engine.recommend(query, k=k, hide_possibly_closed=hide_closed)
+    near_label = None if near_choice == "Anywhere" else near_choice
+    out = engine.recommend(query, k=k, hide_possibly_closed=hide_closed,
+                           near=PLACES.get(near_label), radius_km=radius if near_label else None)
 
 if out["aspects"]:
     noise_note = {1: " (you want it quiet)", -1: " (you want it lively)", 0: ""}[out["direction"]]
@@ -546,19 +610,25 @@ else:
     st.markdown('<p class="understood">No specific features recognised, so we matched the meaning of '
                 f'your request against {n_sents:,} review sentences.</p>', unsafe_allow_html=True)
 
+if near_label:
+    st.markdown(f'<p class="understood">Filtered to cafes within {radius:g} km of {near_label}.</p>',
+                unsafe_allow_html=True)
+
 if not out["results"]:
-    st.warning("No cafes matched. Try fewer conditions, or switch off 'Hide cafes with no reviews "
-               "since early 2020' in the sidebar.")
+    st.warning("No cafes matched. Try a larger distance or another neighbourhood in the sidebar, "
+               "or switch off 'Hide cafes with no reviews since early 2020'.")
+    footer()
     st.stop()
 
 left, right = st.columns([3, 2], gap="large")
 with right:
-    render_map(out["results"])
-    st.caption("Numbers match the ranking on the left.")
+    render_map(out["results"], near_label)
+    st.caption("Numbers match the ranking on the left."
+               + (f" The light dot marks {near_label}." if near_label else ""))
 with left:
     for rank, r in enumerate(out["results"], 1):
         with st.container(border=True):
-            render_sheet(rank, r, out["direction"])
+            render_sheet(rank, r, out["direction"], near_label)
             key = (query, r["shop"])
             if key in st.session_state.summaries:
                 st.markdown(f'<div class="ai">{esc(st.session_state.summaries[key])}'
@@ -568,3 +638,5 @@ with left:
                 with st.spinner("Writing a summary from these quotes..."):
                     st.session_state.summaries[key] = summarise(query, r)
                 st.rerun()
+
+footer()
