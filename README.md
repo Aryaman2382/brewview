@@ -41,31 +41,43 @@ brewview/
 - Python 3.10+ (tested on 3.12)
 - pip
 
-### 1. Clone and install
+### 1. Clone the repo
 
 ```bash
 git clone https://github.com/Aryaman2382/brewview.git
 cd brewview
-python -m venv .venv
+```
+
+### 2. Set up Python environment
+
+```bash
+python3 -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 2. Add the data
+> **Note:** If you have Python 3.9 or older, use `python3.12` (or whichever 3.10+ version you have) instead of `python3` when creating the venv.
 
-The `data/` folder is not tracked in git (too large). Download `brewview_app_data.zip` from the [shared Google Drive](https://drive.google.com/drive/folders/1lJCm4VBT7VAQ7L2SxCvUSP2m6HX26ar9?usp=sharing) and extract it:
+### 3. Add the data
+
+The `data/` folder is too large for GitHub (~1 GB). Download it from the [shared Google Drive](https://drive.google.com/drive/folders/1lJCm4VBT7VAQ7L2SxCvUSP2m6HX26ar9?usp=sharing) and extract it into the repo:
 
 ```bash
 unzip brewview_app_data.zip -d data/
 ```
 
-You should see five files inside `data/`: `sentences.parquet`, `dense_embeddings.npy`, `dense_meta.json`, `shops.csv`, `shop_profiles.csv`.
+Verify you have these five files inside `data/`:
+- `sentences.parquet` - 382K review sentences with aspects and sentiment
+- `dense_embeddings.npy` - sentence embeddings
+- `dense_meta.json` - embedding metadata
+- `shops.csv` - cafe metadata (name, coordinates, review count)
+- `shop_profiles.csv` - Bayesian-shrunk aspect profiles per cafe
 
-### 3. Run the app
+### 4. Run the app
 
 ```bash
-streamlit run app.py
+python3 -m streamlit run app.py
 ```
 
 The app opens at `http://localhost:8501`. Try queries like:
@@ -84,12 +96,12 @@ The app opens at `http://localhost:8501`. Try queries like:
 
 | Member            | Contributions |
 |-------------------|--------------|
-| Aryaman Malik (25980501)    | Aspect annotation (210-row hand-labelling), inter-annotator agreement (50-row overlap), GitHub repo setup, app deployment testing |
-| Vedang Gosavi (26059271)    | NLP pipeline development, system architecture |
-| Prachi Pramod Dhimate          | LLM summary evaluation (60 blind-labelled summaries), inter-annotator agreement (50-row overlap), report writing (data sources, references) |
-| Lavil Saldanha (26036727)   | Ground-truth validation (Yelp WiFi/NoiseLevel cross-check), error analysis & categorisation, report writing (challenges, limitations) |
-| Chakshu Karwal (26038226)   | User study (SUS usability survey, 5-8 participants), UX feedback & recommendations, demo video, report writing (outcomes & value) |
-| Aditya Ahlawat (25980311)   | Market comparison (Google Maps, Yelp vs BrewView), poster update with final results, report writing (objectives, recommendations, final edit) |
+| Aryaman Malik     | Aspect annotation (210-row hand-labelling), inter-annotator agreement (50-row overlap), GitHub repo setup, app deployment testing |
+| Vedang Gosavi     | NLP pipeline development, system architecture |
+| Prachi            | LLM summary evaluation (60 blind-labelled summaries), inter-annotator agreement (50-row overlap), report writing (data sources, references) |
+| Lavil Saldanha    | Ground-truth validation (Yelp WiFi/NoiseLevel cross-check), error analysis & categorisation, report writing (challenges, limitations) |
+| Chakshu Karwal    | User study (SUS usability survey, 5-8 participants), UX feedback & recommendations, demo video, report writing (outcomes & value) |
+| Aditya Ahlawat    | Market comparison (Google Maps, Yelp vs BrewView), poster update with final results, report writing (objectives, recommendations, final edit) |
 
 ## License
 
