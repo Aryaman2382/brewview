@@ -2,19 +2,19 @@
 
 **NLP-powered cafe recommendation engine for Philadelphia**
 
-UTS 36118 ANLP — AT2 Group 21
+UTS 36118 ANLP - AT2 Group 21
 
 ## What it does
 
-BrewView analyses ~382K review sentences from Philadelphia cafes and recommends places based on what reviewers actually say — not just star ratings. Ask for "a quiet cafe with strong espresso and good wifi" and it finds matching spots using aspect-based sentiment analysis and dense semantic retrieval.
+BrewView analyses ~382K review sentences from Philadelphia cafes and recommends places based on what reviewers actually say - not just star ratings. Ask for "a quiet cafe with strong espresso and good wifi" and it finds matching spots using aspect-based sentiment analysis and dense semantic retrieval.
 
 ## How it works
 
-1. **Aspect extraction** — A regex lexicon detects 14 aspects (coffee, tea, food, vibe, service, seating, price, parking, location, hours, internet, alcohol, study, noise) per sentence.
-2. **Sentiment scoring** — VADER scores each mention; Bayesian shrinkage (K=5) builds stable cafe profiles.
-3. **Dense retrieval** — Sentence embeddings (all-MiniLM-L6-v2) enable semantic search across all 382K sentences.
-4. **Hybrid ranking** — Aspect fit (50%) + semantic relevance (35%) + overall sentiment (15%).
-5. **RAG summaries** — Optional local LLM (Qwen2.5-0.5B) generates one-line summaries grounded in retrieved quotes.
+1. **Aspect extraction** - A regex lexicon detects 14 aspects (coffee, tea, food, vibe, service, seating, price, parking, location, hours, internet, alcohol, study, noise) per sentence.
+2. **Sentiment scoring** - VADER scores each mention; Bayesian shrinkage (K=5) builds stable cafe profiles.
+3. **Dense retrieval** - Sentence embeddings (all-MiniLM-L6-v2) enable semantic search across all 382K sentences.
+4. **Hybrid ranking** - Aspect fit (50%) + semantic relevance (35%) + overall sentiment (15%).
+5. **RAG summaries** - Optional local LLM (Qwen2.5-0.5B) generates one-line summaries grounded in retrieved quotes.
 
 ## Repository structure
 
@@ -22,7 +22,7 @@ BrewView analyses ~382K review sentences from Philadelphia cafes and recommends 
 brewview/
 ├── app.py                      # Streamlit web app
 ├── NLP_AT2_2.ipynb             # Full analysis notebook (pipeline, evaluation, figures)
-├── data/                       # App data (not in repo — see setup)
+├── data/                       # App data (not in repo - see setup)
 │   ├── sentences.parquet       # 382K review sentences with aspects & sentiment
 │   ├── dense_embeddings.npy    # Sentence embeddings (all-MiniLM-L6-v2)
 │   ├── dense_meta.json         # Embedding metadata
@@ -82,12 +82,15 @@ The app opens at `http://localhost:8501`. Try queries like:
 
 ## Team
 
-| Member   | Contributions |
-|----------|--------------|
-| Tanveer  | Pipeline (aspect lexicon, VADER scoring, Bayesian profiles, cross-city validation, dense retrieval, RAG, Streamlit app) |
-| Aryaman  | App testing, human annotation, GitHub repo setup |
-| Prachi   | Human annotation (50-row overlap for inter-annotator agreement) |
+| Member            | Contributions |
+|-------------------|--------------|
+| Aryaman Malik     | Aspect annotation (210-row hand-labelling), inter-annotator agreement (50-row overlap), GitHub repo setup, app deployment testing |
+| Vedang Gosavi     | NLP pipeline development, system architecture |
+| Prachi            | LLM summary evaluation (60 blind-labelled summaries), inter-annotator agreement (50-row overlap), report writing (data sources, references) |
+| Lavil Saldanha    | Ground-truth validation (Yelp WiFi/NoiseLevel cross-check), error analysis & categorisation, report writing (challenges, limitations) |
+| Chakshu Karwal    | User study (SUS usability survey, 5-8 participants), UX feedback & recommendations, demo video, report writing (outcomes & value) |
+| Aditya Ahlawat    | Market comparison (Google Maps, Yelp vs BrewView), poster update with final results, report writing (objectives, recommendations, final edit) |
 
 ## License
 
-Academic use only — UTS 36118 AT2.
+Academic use only - UTS 36118 AT2.
