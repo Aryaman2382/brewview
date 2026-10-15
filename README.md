@@ -54,7 +54,7 @@ pip install -r requirements.txt
 
 ### 2. Add the data
 
-The `data/` folder is not tracked in git (too large). Download `brewview_app_data.zip` from the shared drive and extract it:
+The `data/` folder is not tracked in git (too large). Download `brewview_app_data.zip` from the [shared Google Drive](https://drive.google.com/drive/folders/1lJCm4VBT7VAQ7L2SxCvUSP2m6HX26ar9?usp=sharing) and extract it:
 
 ```bash
 unzip brewview_app_data.zip -d data/
