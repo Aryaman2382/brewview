@@ -84,12 +84,12 @@ The app opens at `http://localhost:8501`. Try queries like:
 
 | Member            | Contributions |
 |-------------------|--------------|
-| Aryaman Malik     | Aspect annotation (210-row hand-labelling), inter-annotator agreement (50-row overlap), GitHub repo setup, app deployment testing |
-| Vedang Gosavi     | NLP pipeline development, system architecture |
+| Aryaman Malik (25980501)    | Aspect annotation (210-row hand-labelling), inter-annotator agreement (50-row overlap), GitHub repo setup, app deployment testing |
+| Vedang Gosavi (26059271)    | NLP pipeline development, system architecture |
 | Prachi Pramod Dhimate          | LLM summary evaluation (60 blind-labelled summaries), inter-annotator agreement (50-row overlap), report writing (data sources, references) |
-| Lavil Saldanha    | Ground-truth validation (Yelp WiFi/NoiseLevel cross-check), error analysis & categorisation, report writing (challenges, limitations) |
-| Chakshu Karwal    | User study (SUS usability survey, 5-8 participants), UX feedback & recommendations, demo video, report writing (outcomes & value) |
-| Aditya Ahlawat    | Market comparison (Google Maps, Yelp vs BrewView), poster update with final results, report writing (objectives, recommendations, final edit) |
+| Lavil Saldanha (26036727)   | Ground-truth validation (Yelp WiFi/NoiseLevel cross-check), error analysis & categorisation, report writing (challenges, limitations) |
+| Chakshu Karwal (26038226)   | User study (SUS usability survey, 5-8 participants), UX feedback & recommendations, demo video, report writing (outcomes & value) |
+| Aditya Ahlawat (25980311)   | Market comparison (Google Maps, Yelp vs BrewView), poster update with final results, report writing (objectives, recommendations, final edit) |
 
 ## License
 
