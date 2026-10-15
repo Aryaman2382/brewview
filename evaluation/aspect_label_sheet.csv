@@ -1,0 +1,211 @@
+item_id,aspect,sentence,predicted,aspect correct (y/n),polarity correct (y/n),notes
+1,food,Good thing I didn't go food shopping yet.,positive,y,y,
+2,study,"Afterward, I asked if wifi was available to which they replied that the current location did not have wifi which was a downer as I was looking to get some work done",neutral,y,n,"negative — no wifi, 'downer'"
+3,location,This location is an absolute embarrassment to the Dunkin franchise.,negative,n,,"'location' = this branch, not geographic location"
+4,vibe,"The Gleaner's Cafe staff have been nothing short of charming, friendly, and smiles whenever I have visited.",positive,n,,"about staff/service, 'charming' triggered vibe"
+5,internet,"Also, I'd REALLY love some wifi (but understand if they don't want to be the type of place where people like me stick around too long).",positive,y,y,
+6,service,The staff are super friendly.,positive,y,y,
+7,hours,"I have gotten take out for drinks and food twice, and dined in for dinner on the second day of their soft opening.",neutral,n,,'soft opening' triggered hours; about food/takeout
+8,tea,Their teas and coffees are great.,positive,y,y,
+9,alcohol,Plenty has been redone as a very cute little wine bar/ coffee bar.,positive,y,y,
+10,vibe,The music in this place sucks I assume it's his taste.,negative,y,y,
+11,seating,They didn't let my friends sit down and eat dessert despite having open tables.,negative,y,y,
+12,tea,They also have a solid selection for those who are into fruity teas.,positive,y,y,
+13,vibe,The servers were very kind and the atmosphere was busy,positive,y,y,
+14,price,"Starbucks' prices are too crazy, so this is a pure treat.",positive,y,y,
+15,coffee,"There's this ""coffee"" place casually named 4th Street Cafe at the corner of 4th and Race, next to Kisso.",positive,y,y,
+16,internet,The internet does not work a lot/is buggy.,neutral,y,n,internet buggy = negative not neutral
+17,study,"Not a lot of seating, definitely better if you just want to sit and relax for a minute than to actually hunker down with a laptop.",positive,y,y,
+18,coffee,if you're looking for some Philly coffee put them on your list.,neutral,y,y,
+19,study,I've also noticed a lot of people doing work or studying.,neutral,y,y,
+20,noise,"New to the area for the past two mornings at an off time when it's not crowded, I showed up and ordered coffee today the woman came out and said that she couldn't do this every day because it disrupted the flow of her shop and she wouldn't sell me coffee like this after today.",quiet,n,,'crowded' triggered noise; about rude service
+21,location,This quaint little neighborhood cafe is just the bees knees.,neutral,y,y,
+22,hours,"they do close early on weekdays, so don't head over mid-day to grab a cup of coffee, set up your laptop and eat a sweet cinnamon and butter crepe.",positive,y,y,
+23,seating,"There is ample seating for a cafe in both the front and back of the cafe, the staff is always polite, and the coffee is tasty and served quickly.",neutral,y,y,
+24,parking,Bicycle and street parking are available right outside.,neutral,y,y,
+25,parking,no problem finding street parking.,positive,y,y,
+26,seating,and it was hard to find an open table at 9:30 on a Saturday morning.,negative,y,y,
+27,coffee,Glad to see that Passenger Coffee has made an appearance at will now be my local favorite.,positive,y,y,
+28,price,Most certainly a little on the pricey side,positive,y,n,'pricey' = negative not positive
+29,coffee,Staff at this location has always been friendly and helpful when ordering drinks or picking out beans.,positive,y,y,
+30,study,This is the best place for some laptop working without having to scramble for that one table near an outlet like some other spots in the area.,positive,y,y,
+31,tea,"My boyfriend and I ordered drinks, and I asked for the organic Matcha latte.",neutral,y,y,
+32,internet,Highly recommended I love their fast google wifi that is free.,positive,y,y,
+33,noise,Small and quiet.,quiet,y,y,
+34,internet,the coldness and internet issues definitely brought it down for me.,positive,y,n,internet issues 'brought it down' = negative
+35,noise,I can imagine the weekends are fairly packed here and on rainy or colder days seating is an issue.,loud,y,y,
+36,price,Worth mentioning,positive,n,,'worth mentioning' triggered price; not about price
+37,tea,I got the milk tea with custard pudding and it was wonderful with a unique tea flavor to it.,positive,y,y,
+38,noise,Parking is a challenge because it's so busy.,loud,y,y,
+39,location,I wandered into Good Karma Cafe spontaneously today while walking around the downtown area.,positive,y,y,
+40,service,Owner knows the details of everything in his shop.,neutral,y,n,owner knowledgeable = positive not neutral
+41,vibe,"i like the really clean, post mod aesthetic.",positive,y,y,
+42,service,"I actually went up to the baristas after and was like ""WTHeck, the sandwich was decent",positive,y,y,
+43,service,"Staff bringing orders out was efficient, friendly, and great.",positive,y,y,
+44,noise,No wait and not too crowded.,quiet,y,y,
+45,vibe,"The place is cozy and warm, very welcoming.",positive,y,y,
+46,internet,"mainly I think it's that they won't get a decent, business-sized router, and won't buy enough bandwidth to really make it conducive to more than 3 people on the internet at once.",neutral,y,y,
+47,service,Customer service is key when dealing with customers who's choosing to spend their money somewhere.,neutral,y,y,
+48,location,"As I've mentioned, I'm gonna hate writing this because Le Pain Quotidien, located at 1425 Walnut Street, Philadelphia, PA, has rapidly deteriorated in service over the past few months.",negative,y,y,
+49,noise,The guy running everything seemed pretty chill and was very welcoming.,quiet,n,,"'chill' = demeanor, not noise level"
+50,food,I went to this bakery for breakfast and ordered a breakfast burrito and Italian soda.,neutral,y,y,
+51,coffee,My husband and I LOVE going to Vineyards for breakfast or a quick coffee date.,positive,y,y,
+52,tea,I gave up coffee so the fact that I can find an amazing tea selection at a coffeehouse is great and will keep me coming back.,positive,y,y,
+53,parking,"Open air, outside seating, parking and wi-fi.",neutral,y,y,
+54,coffee,"For coffee, I would go across the street to Elixir.",neutral,y,y,
+55,coffee,I also like that they have a reward points program for free coffee/sandwiches.,positive,y,y,
+56,seating,"The shop is cute, bright, and has a good amount of indoor seating space, perfect for a coffee date or if you're looking for a place to study or get work done.",positive,y,y,
+57,seating,Friendly staff and great window seating.,positive,y,y,
+58,internet,where is the wifi?,neutral,y,n,'where is the wifi?' = complaint = negative
+59,internet,Great herbal tea with free Wifi.,positive,y,y,
+60,alcohol,have a good beer and wine selection just makes it a place you can stay and spend some time at.,positive,y,y,
+61,seating,"If it is busy, you may end up sharing at a larger communal table.",positive,y,n,forced communal table = negative not positive
+62,hours,"there have been multiple instances where I show up during their listed business hours and they are suddenly ""closed."" Their business hours state they are open until 5 PM, and their menu offers sandwiches for lunch.",neutral,y,n,closed during listed hours = negative
+63,noise,"I came here to study around 3:45pm, and it was a little too noisy for my taste.",loud,y,y,
+64,price,Great breakfast and brunch food at very reasonable prices compared to other places in the city.,positive,y,y,
+65,location,Actually I've been going here since they opened their first location.,neutral,y,y,
+66,vibe,somehow felt cozy.,neutral,y,y,
+67,vibe,Nice vibe.,positive,y,y,
+68,food,The almond croissant was perfection.,positive,y,y,
+69,alcohol,GET THE BEER CAN CHICKEN.,neutral,n,,"'beer can chicken' = cooking method, not alcohol"
+70,food,This consisted of a tortilla with no more than a quarter cup of food inside.,negative,y,y,
+71,coffee,"Sometimes the baristas are great, and sometimes they give me a ton of attitude for requesting they put half and half in my coffee because I'm late and don't have time to do it myself.",positive,y,n,mixed — baristas 'give attitude' = not purely positive
+72,food,"Bagels are very good, with many options.",positive,y,y,
+73,parking,"I only wish it were 10,000 square feet with parking.",positive,y,y,
+74,noise,The space is light and bright and there's lots of room to read or chat and enjoy the great coffee (or tea/snacks) with friends in a relaxed environment.,quiet,y,y,
+75,seating,"The Random Tea Room is one of those lovely, comfortable, and cozy spaces where you want to snuggle into a corner and feel like you're living in the middle of an old-school nursery rhyme.",positive,y,y,
+76,hours,The only reason for the one star off is because their hours are posted wrong- they actually close at 4 and kitchen closes at 3.,negative,y,y,
+77,parking,"The thought of driving downtown, finding parking and everything else on empty stomachs was too much.",negative,y,y,
+78,study,"You really have to stay here for at least an hour to relax, study, or chat, and most importantly sip on good and fresh tea.",positive,y,y,
+79,location,"Despite its uneasy fit in Point Breeze, The OCF is a great addition to the neighborhood.",positive,y,y,
+80,food,I was staring at the menu trying to decide what to eat and no one offered to assist me or give me any suggestions.,negative,y,y,
+81,vibe,This location's predominantly grey interior feels more like a mess hall aboard the Battlestar Galactica than a cafe,positive,y,n,'mess hall' comparison = negative vibe
+82,location,This super cute market is located too close to me that I have only been once.,positive,y,y,
+83,price,"The Vietnamese coffee is delish and worth the wait, too.",positive,n,,'worth the wait' triggered price; about coffee quality
+84,coffee,I ordered a trenta black unsweetened iced coffee no room and a cup of ice.,negative,y,n,just ordering a drink = neutral not negative
+85,seating,I've come here to study a few times and what I like is how much seating is available.,positive,y,y,
+86,study,"If there's anything I would recommend, it would be more outlets.",positive,y,y,
+87,price,definitely worth the wait!,positive,n,,'worth the wait' triggered price; not about price
+88,alcohol,It's worth mentioning they also have a full bar with a well curated selection of beers and wines,positive,y,y,
+89,location,They have seating outside on both sides of the corner location and are located on the quietest part of Christian street.,neutral,y,y,
+90,hours,"As for decor and service, their inner decor has definitely improved since their soft opening.",positive,n,,'opening' triggered hours; about decor/service
+91,price,"The main reason we stopped ordering from here was their cakes are simply too small for a 10 person office...pricey, too!",negative,y,y,
+92,parking,Only negative for me is parking...but that won't deter me from stopping by again.,negative,y,y,
+93,noise,It was quiet and good place to get work done.,quiet,y,y,
+94,location,"I will never return to this location, it's not the first time I've had a bad experience.",negative,y,y,
+95,seating,This is a beautiful cafe with great outside seating.,positive,y,y,
+96,food,"The food itself is chain food, so there's no reason to comment seeing as it's the same everywhere.",negative,y,y,
+97,parking,There is ample parking.,neutral,y,y,
+98,internet,Wifi sucks.,negative,y,y,
+99,coffee,"I'm sort of snobby and purist when it comes to coffee, I love hitting up a different one of their lattes each time, with varieties that will playfully use peanut butter, spices, cocoa, etc.",positive,y,y,
+100,seating,And good luck trying to find a seat!,positive,y,n,sarcasm — 'good luck finding a seat' = negative
+101,parking,Parking is a bitch so be prepared to look ahead,negative,y,y,
+102,food,Took an early morning stroll from the Hotel Monaco looking for breakfast and stopped in after seeing the sign outside.,negative,n,,'breakfast' triggered food; just describing arriving
+103,alcohol,The beer selection is unique.,neutral,y,y,
+104,vibe,The two employees behind the counter gave off a really positive/relaxed and helpful vibe.,positive,y,y,
+105,study,I think they can work on customer service a little bit more and always look to improve the customers experience.,positive,n,,'work on' triggered study; about customer service
+106,alcohol,We drank cocktails and wine from the tap.,neutral,y,y,
+107,coffee,Latte Art Cons: 1.,neutral,y,n,'Cons:' = listing negatives = negative not neutral
+108,study,"Coffee is delicious (I've never had any special drinks, so can't comment on that), atmosphere non-fussy and laid back, this is where I go when I need a place to set up my laptop and get some work done with great coffee & wi fi.",positive,y,y,
+109,vibe,the atmosphere was a bit stiff.,neutral,y,n,'a bit stiff' = negative not neutral
+110,seating,relaxing environment that is as comfortable as your own living room and filled with dozens of interesting people.,positive,y,y,
+111,alcohol,well thought out beer selection tow on draft and several in bottles.,positive,y,y,
+112,food,"Although it was the dinner hour, they only had 2 people working and both were making sandwiches behind the counter.",neutral,y,y,
+113,parking,"Decor is simple, clean with a fun garage door.",positive,n,,'garage door' triggered parking; about decor
+114,service,"I love the baristas , Dave and Theo!",positive,y,y,
+115,price,"A little pricey, $6 for every 30 minutes and they only take cash.",neutral,y,n,'pricey' + 'only cash' = negative not neutral
+116,tea,Good for a short coffee/tea break.,positive,y,y,
+117,parking,Good luck trying to find a parking spot.,positive,y,n,sarcasm — 'good luck finding parking' = negative
+118,alcohol,I also like that they serve cheese and alcohol.,positive,y,y,
+119,internet,I feel like coffee shops without wifi are pretty archaic in this day and age.,neutral,y,y,
+120,seating,not overly packed as to have to wait long periods of time to get a seat.,neutral,y,n,'not overly packed' = positive not neutral
+121,service,Very industrial inside with great service and even better Bloody Mary-- very refreshing and perfect for a Sunday morning hangovers.,positive,y,y,
+122,study,"Great for a place to catch up with someone, not so much to study.",positive,y,n,'not so much to study' = negative for study
+123,alcohol,"My husband and I just finished the 5 course ""secret supper"" menu with wine pairing and it was ridiculously good.",positive,y,y,
+124,tea,"Tea Do definitely does not have the powder sugar taste like a lot of other places, which is why I am always down to go to Tea Do.",positive,y,y,
+125,tea,If there is a bubble tea place to go that's always full of energy and people its tea do!,positive,y,y,
+126,internet,They also have wifi so you can chill and just have a cup of coffee if you like.,positive,y,y,
+127,service,Terrible customer service.,negative,y,y,
+128,internet,"There is also no wifi (unless you have a hotspot or xfinity), so I'm not quite sure what they were going for with this place.",negative,y,y,
+129,food,"(A very welcome alternative to the long line and wait time at Mugshots, especially when you're ordering food, and especially on the weekends!) Ryan and his family run a great little sandwich shop...keep it up!",positive,y,y,
+130,seating,"The interior was inviting and comfortable, bright and airy; felt like a home.",positive,y,y,
+131,food,"Yucky egg and cheese croissant, the eggs were runny and it stunk like farts.",negative,y,y,
+132,price,"We stopped in for a quick coffee one morning and were treated to a nice experience, with fairly reasonable prices.",positive,y,y,
+133,coffee,I make a special trip to stop by this cafe every week during the school year on Saturdays to pick up an iced americano and mozzarella sandwich.,positive,y,y,
+134,service,The staff is nice,positive,y,y,
+135,service,"The food was delicious and the gluten-free walnut cake was TO DIE FOR (Seriously, I need more of that right now.) My only complaint (and it's a teeny-tiny one) is the service style.",positive,y,y,
+136,location,This location is definitely not my favorite,positive,y,n,'definitely not my favorite' = negative
+137,food,The smoked salmon breakfast platter and their tomato egg and cheese were both soooo good!!!,positive,y,y,
+138,study,"As it is popular, it can get noisy if you're studying.",positive,y,n,'can get noisy if studying' = negative for study
+139,hours,"I went here during their soft opening, so I'm sure they're still getting things together",positive,n,,'soft opening' triggered hours; not about hours
+140,noise,"chill, relaxed vibe with great music....I thoroughly enjoyed listening to a Cramps album while I ate my lunch - how cool is that?!",quiet,y,y,
+141,service,Inexpensive and delicious with good service.,positive,y,y,
+142,food,So even if I could find my largest mixing bowl to hold all the cream cheese it still would have been a lousy toasted bagel.,negative,y,y,
+143,seating,if you go up a floor you will find a library or better than library study room with plenty of small tables and chairs.,positive,y,y,
+144,alcohol,"They even stay open late and serve alcohol, including rum they distill themselves.",neutral,y,y,actually about alcohol — sentence describes alcohol selection
+145,parking,"Also, found parking very easily.",positive,y,y,
+146,hours,"study location (while studying for the GMAT, I was there 5 days a week enjoying the nice big tables and daily 7am-10pm hours) ...",positive,y,y,
+147,price,"Chips on the side were just the right portion for me and best part of all, the price was not gouging.",positive,y,y,
+148,tea,but the fruit tea blends are SO sweet i feel like i'm just drinking sugar water.,positive,y,n,'SO sweet like sugar water' = negative
+149,service,Friendly staff.,positive,y,y,
+150,vibe,"Four stars for the service and the ambiance, both of which are inviting and make one want to stay and sit with a coffee and chat.",positive,y,y,
+151,hours,My only complaint are the hours.,negative,y,y,
+152,location,"Right in the heart of Fishtown, Milkcrate Cafe is a great social hub for those who populate the neighborhood and for those, like me, who are eager to scout the territory.",positive,y,y,
+153,food,"They have great ""light"" food.",positive,y,y,
+154,alcohol,"Together the spinach, garlic, and red wine reduction complemented the steak perfectly.",positive,y,y,
+155,parking,Here is my review: Pros: - the people are very friendly - ample parking in the back - make your drink right 97% of the time.,positive,y,y,
+156,noise,Saturdays are pretty busy,loud,y,y,
+157,location,It has everything you would want in a neighborhood coffee shop.,positive,y,y,
+158,tea,"First, iPhone and now I Tea.",neutral,n,,"'I Tea' is a pun/name, not about tea"
+159,tea,"Milk tea (Thai or oolong) with 30% sugar, less ice, and bubbles is my usual order.",neutral,y,y,
+160,location,I love the friendliness and the neighborhood feeling of this place where the Barista actually knows who you are and chats a bit like she really likes her job and is glad that people come in.,positive,y,y,
+161,alcohol,"Also, they give complimentary mimosas with your meal.",positive,y,y,
+162,alcohol,Cocktails are phenomenal.,neutral,y,y,
+163,hours,Had the tastiest poké bowl & went back a few hours later for bubble tea.,neutral,n,,'hours later' triggered hours; about food
+164,tea,I love bubble tea,positive,y,y,
+165,price,"Enjoyable stop, if not a bit expensive.",positive,y,n,'a bit expensive' = negative not positive
+166,coffee,They serve illy coffee!!!!!!!,neutral,y,y,
+167,study,They knew the only girl who was working there somehow as she spent most of my time there chatting/serving them rather than working on my order.,neutral,n,,'working on order' triggered study; about slow service
+168,internet,"This place, however, has the worst wifi.",negative,y,y,
+169,tea,Next time I want to try the bubble tea and specialty rolls.,positive,y,y,
+170,price,not totally worth the bang for the buck.,negative,y,y,
+171,study,This is your go-to ultra-hipster impossibly trendy sip-n-stay-all-day-studying four dollar shot of espresso reclaimed wood industrial chic coffee joint.,positive,y,y,
+172,tea,Spicy chai?,neutral,y,y,
+173,internet,barely pales against campus wifi so I wouldn't complain too much.,positive,y,n,'barely pales against campus wifi' = mediocre = negative
+174,hours,Nothing on the web site stating the hours have changed...nada!,neutral,y,n,hours not updated on website = complaint = negative
+175,parking,"It was little tricky to find a parking space, and I hated cobblestone pavement on the front street.",negative,y,y,
+176,hours,They still hang around for hours and take up space.,neutral,n,,"'hang around for hours' = duration idiom, not opening hours"
+177,study,Plenty of seats and electrical outlets and free wifi.,positive,y,y,
+178,vibe,"it's cute for South Street, and they've done a lot with the decor.",positive,y,y,
+179,study,There are always people with their laptops here and there are plenty of outlets.,neutral,y,y,
+180,hours,"Bottom line: As a recent froyo opening, I do think this place deserves more success then it sees right now- will probably be back for a second visit.",positive,n,,'opening' triggered hours; about froyo shop
+181,hours,It's frustrating when you pack up all your books and get ready to settle in for a few hours of work to realize that at 2pm on a Wednesday afternoon the place is locked.,negative,y,y,
+182,location,"Mong Kok has much to owe to its location on 10th street, and its extremely conspicuous neon orange signage.",neutral,y,y,
+183,coffee,Not only is the coffee good,positive,y,y,
+184,hours,With people like Colleen D opening up great quality stores like this it's our duty to support local businesses to keep them open.,positive,n,,'keep them open' triggered hours; about supporting local business
+185,service,Slow service and not dog friendly.,negative,y,y,
+186,vibe,It was delicious and a great atmosphere!!!,positive,y,y,
+187,price,Worth every penny.,positive,y,y,
+188,food,Baguettes and croissants look amazing.,positive,y,y,
+189,service,Quick and nice service with tasty food and great atmosphere.,positive,y,y,
+190,vibe,Nice quiet peaceful atmosphere.,positive,y,y,
+191,alcohol,They have beer now!,neutral,y,y,
+192,hours,"We were also sat pretty quick, which was great for such a highly talked about restaurant at peak brunch hours.",positive,n,,'brunch hours' triggered hours; about being seated quickly (service)
+193,seating,"I typically opt for the outdoor seating if available, it's really lovely on sunny days.",positive,y,y,
+194,price,"Also worth noting that the menu has a lot of healthier options as well, all of which looked great.",positive,n,,'worth noting' triggered price; about healthy food options
+195,service,Customer service rolled their eyes at me.,neutral,y,n,'rolled their eyes' = negative not neutral
+196,noise,"I really enjoy stopping by, getting some homemade food and relaxing by the river.",quiet,y,y,
+197,noise,"Quiet little neighborhood cafe with extensive tea, bubble tea, and coffee options near a school.",quiet,y,y,
+198,parking,"The lunch date stars aligned perfectly, as she arrived into the city at 12:00 ish and found a parking spot directly in front of my office.",positive,n,,'parking spot' incidental; not about parking quality
+199,location,I started going to this location because a friend gave me some coupons and I'm so glad I did!,positive,n,,"'location' = branch, not geographic location"
+200,internet,"One drawback, they don't have WiFi and it is a great location to sit and get work done.",positive,y,n,'don't have WiFi' = negative not positive
+201,price,"The staff are friendly, the prices are good, and there is a comfortable area with tables for working, reading or catching up with friends.",positive,y,y,
+202,vibe,"While the decor is cute and my mom loved the granola and yogurt (which is near $7...highway robbery!), I'd suggest walking down the street to Honey's or Resurrection.",positive,y,n,sentence mixes positive decor with 'highway robbery' price; vibe aspect debatable
+203,coffee,"I probably wouldn't change much at all, including having access to the good coffee concoctions and iced coffee (good iced coffee)...and sugar cookies...and brownies...and free wifi.",positive,y,y,
+204,tea,"I enjoyed this place, the food was good( I ordered a Poke bowl and seasalt froth bubble tea), the atmosphere nice(wide spacious with a sushi bar) and just a nice relaxing place to be at.",positive,y,y,
+205,internet,"There is free wifi, baked goods and sandwiches available as well.",positive,y,y,
+206,parking,Definitely don't drive because parking is impossible.,positive,y,n,'parking is impossible' = negative not positive
+207,alcohol,"This location serves beer and wine, in addition to having a rum distillery (and of course sells the rum).",neutral,y,y,
+208,noise,"But nevertheless, relaxing place to be.",quiet,y,y,
+209,study,"As a student that frequents coffee shops all around West Philly to study/get my caffeine fix/eat, I can honestly say that Kaffa Crossing is the best on all accounts.",positive,y,y,
+210,noise,This place is a nice quiet coffee shop in Bella Vista.,quiet,y,y,
