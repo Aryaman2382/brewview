@@ -44,7 +44,7 @@ brewview/
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/<your-username>/brewview.git
+git clone https://github.com/Aryaman2382/brewview.git
 cd brewview
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
