@@ -94,31 +94,31 @@ The app opens at `http://localhost:8501`. Try queries like:
 
 ## Team & contributions
 
-**Aryaman Malik** - Evaluation & reproducibility
+**Aryaman Malik (25980501)** - Evaluation & reproducibility
 - Reviewed and finalised the 210-sentence aspect evaluation set, checking whether each detected aspect and sentiment was correct
 - Labelled a 50-sentence overlap set used to measure agreement between annotators
 - Set up this repository, wrote the setup guide, and confirmed the app runs from a clean install
 
-**Vedang Gosavi** - NLP pipeline & system design
+**Vedang Gosavi (26059271)** - NLP pipeline & system design
 - Built the aspect extraction and sentiment scoring pipeline
 - Designed how the components fit together, from review text to ranked cafe recommendations
 
-**Prachi** - LLM evaluation & references
+**Prachi Dhimate (26060133)** - LLM evaluation & references
 - Blind-evaluated 60 AI-generated cafe summaries for faithfulness to the source reviews and for specificity
 - Independently labelled the 50-sentence overlap set, which gives the inter-annotator agreement score
 - Wrote the report's data sources section and compiled the APA references (VADER, Sentence-BERT, RAG, Qwen, Yelp Open Dataset)
 
-**Lavil Saldanha** - Validation & error analysis
+**Lavil Saldanha (26036727)** - Validation & error analysis
 - Checked the model's "quiet" and "wifi" predictions against Yelp's own NoiseLevel and WiFi attributes as an external ground truth
 - Grouped the model's mistakes into recurring error types (sarcasm, negation, keyword false triggers)
 - Wrote the report's challenges, solutions and limitations sections
 
-**Chakshu Karwal** - User study & demo
+**Chakshu Karwal (26038226)** - User study & demo
 - Ran a usability study with 5-8 participants on set search tasks, scored with the System Usability Scale (SUS)
 - Recorded where users got confused and proposed interface fixes
 - Produced the app demo video and wrote the report's outcomes and value section
 
-**Aditya Ahlawat** - Market analysis, poster & editing
+**Aditya Ahlawat (25980311)** - Market analysis, poster & editing
 - Compared how Google Maps and Yelp recommend cafes with BrewView's review-based approach
 - Updated the poster with final results and app screenshots
 - Wrote the report's objectives, scope and recommendations sections, and did the final edit for flow
