@@ -21,7 +21,7 @@ BrewView analyses ~382K review sentences from Philadelphia cafes and recommends 
 ```
 brewview/
 ├── app.py                      # Streamlit web app
-├── NLP_AT2_2.ipynb             # Full analysis notebook (pipeline, evaluation, figures)
+├── NLP_AT2_BrewView.ipynb           # Full analysis notebook (pipeline, evaluation, figures)
 ├── data/                       # App data (not in repo - see setup)
 │   ├── sentences.parquet       # 382K review sentences with aspects & sentiment
 │   ├── dense_embeddings.npy    # Sentence embeddings (all-MiniLM-L6-v2)
