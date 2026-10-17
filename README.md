@@ -100,8 +100,8 @@ The app opens at `http://localhost:8501`. Try queries like:
 - Set up this repository, wrote the setup guide, and confirmed the app runs from a clean install
 
 **Vedang Gosavi (26059271)** - NLP pipeline & system design
-- Built the aspect extraction and sentiment scoring pipeline
-- Designed how the components fit together, from review text to ranked cafe recommendations
+- Project lead. Data extraction and cleaning, aspect-based sentiment pipeline, cafe profiles, cross-city and Austin validation.
+- Dense retrieval and hybrid ranking, RAG layer and LLM evaluation, Streamlit app, analysis notebook; report (NLP methods, findings, appendix)
 
 **Prachi Dhimate (26060133)** - LLM evaluation & references
 - Blind-evaluated 60 AI-generated cafe summaries for faithfulness to the source reviews and for specificity
